@@ -102,6 +102,7 @@ class App extends React.Component {
   };
 
   render() {
+    const { onSaveButtonClick } = this.state;
     return (
       <div>
         <Form
@@ -114,6 +115,19 @@ class App extends React.Component {
           onInputChange={ this.onInputChange }
 
         />
+        { onSaveButtonClick.map((elem, index) => (
+          <Card
+            key={ index }
+            cardName={ elem.cardName }
+            cardDescription={ elem.cardDescription }
+            cardAttr1={ elem.cardAttr1 }
+            cardAttr2={ elem.cardAttr2 }
+            cardAttr3={ elem.cardAttr3 }
+            cardImage={ elem.cardImage }
+            cardRare={ elem.cardRare }
+            cardTrunfo={ elem.cardTrunfo }
+          />
+        )) }
       </div>
     );
   }
