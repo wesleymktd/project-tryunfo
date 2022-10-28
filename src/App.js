@@ -12,22 +12,9 @@ class App extends React.Component {
     cardImage: '',
     cardRare: '',
     cardTrunfo: false,
+    hasTrunfo: false,
     isSaveButtonDisabled: true,
     onSaveButtonClick: [],
-  };
-
-  clearState = () => {
-    this.setState({
-      cardName: '',
-      cardDescription: '',
-      cardAttr1: 0,
-      cardAttr2: 0,
-      cardAttr3: 0,
-      cardImage: '',
-      cardRare: 'normal',
-      cardTrunfo: false,
-      isSaveButtonDisabled: true,
-    });
   };
 
   SaveCard = () => {
@@ -39,18 +26,33 @@ class App extends React.Component {
       cardAttr3,
       cardImage,
       cardRare,
+      cardTrunfo,
     } = this.state;
-    this.setState(({
-      onSaveButtonClick: [{
-        cardName,
-        cardDescription,
-        cardAttr1,
-        cardAttr2,
-        cardAttr3,
-        cardImage,
-        cardRare,
-      }],
-    }), this.clearState);
+    const cardState = {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+    };
+    this.setState((stateAtual) => ({
+      onSaveButtonClick: [...stateAtual.onSaveButtonClick, cardState], // vai manter o que estava no meu estado e adicionar um novo objeto
+      cardName: '',
+      cardDescription: '',
+      cardAttr1: 0,
+      cardAttr2: 0,
+      cardAttr3: 0,
+      cardImage: '',
+      cardRare: 'normal',
+    }));
+    if (cardTrunfo) {
+      this.setState({
+        hasTrunfo: true,
+      });
+    }
   };
 
   validationButton = () => {
@@ -90,8 +92,8 @@ class App extends React.Component {
   };
 
   onInputChange = ({ target }) => {
-    const { name, value } = target;
-
+    const { name } = target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
       [name]: value,
     }, () => {
