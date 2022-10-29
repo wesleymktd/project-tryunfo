@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './components/Card';
 import Form from './components/Form';
-
+// pegar meu array percorrer ele com alguma hoj ver se o card trunfo
 class App extends React.Component {
   state = {
     cardName: '',
@@ -27,6 +27,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     } = this.state;
     const cardState = {
       cardName,
@@ -37,6 +38,7 @@ class App extends React.Component {
       cardImage,
       cardRare,
       cardTrunfo,
+      hasTrunfo,
     };
     this.setState((stateAtual) => ({
       onSaveButtonClick: [...stateAtual.onSaveButtonClick, cardState], // vai manter o que estava no meu estado e adicionar um novo objeto
@@ -46,6 +48,8 @@ class App extends React.Component {
       cardAttr2: 0,
       cardAttr3: 0,
       cardImage: '',
+      cardTrunfo: false,
+      hasTrunfo: false,
       cardRare: 'normal',
     }));
     if (cardTrunfo) {
@@ -91,6 +95,16 @@ class App extends React.Component {
     });
   };
 
+  cardDelet = (name) => {
+    const { onSaveButtonClick } = this.state;
+    const filter = onSaveButtonClick.filter((card) => card.cardName !== name);
+    this.setState(() => ({
+      onSaveButtonClick: filter,
+      hasTrunfo: filter.some((card) => card.cardTrunfo === true),
+    }));
+    console.log(filter.some((card) => card.cardTrunfo === true));
+  };
+
   onInputChange = ({ target }) => {
     const { name } = target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -116,17 +130,25 @@ class App extends React.Component {
 
         />
         { onSaveButtonClick.map((elem, index) => (
-          <Card
-            key={ index }
-            cardName={ elem.cardName }
-            cardDescription={ elem.cardDescription }
-            cardAttr1={ elem.cardAttr1 }
-            cardAttr2={ elem.cardAttr2 }
-            cardAttr3={ elem.cardAttr3 }
-            cardImage={ elem.cardImage }
-            cardRare={ elem.cardRare }
-            cardTrunfo={ elem.cardTrunfo }
-          />
+          <div key={ index }>
+            <Card
+              cardName={ elem.cardName }
+              cardDescription={ elem.cardDescription }
+              cardAttr1={ elem.cardAttr1 }
+              cardAttr2={ elem.cardAttr2 }
+              cardAttr3={ elem.cardAttr3 }
+              cardImage={ elem.cardImage }
+              cardRare={ elem.cardRare }
+              cardTrunfo={ elem.cardTrunfo }
+            />
+            <button
+              data-testid="delete-button"
+              type="button"
+              onClick={ () => this.cardDelet(elem.cardName) }
+            >
+              Excluir
+            </button>
+          </div>
         )) }
       </div>
     );
