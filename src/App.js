@@ -102,7 +102,6 @@ class App extends React.Component {
       onSaveButtonClick: filter,
       hasTrunfo: filter.some((card) => card.cardTrunfo === true),
     }));
-    console.log(filter.some((card) => card.cardTrunfo === true));
   };
 
   onInputChange = ({ target }) => {
