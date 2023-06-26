@@ -3,9 +3,9 @@
 <p align="left"> 
 Tryunfo é um jogo no estilo Super Trunfo! Ao usar este aplicativo, o usuário é capaz de:
 
-Crie um baralho com o tema livre;
-Adicionar e remover uma carta do baralho;
-Veja todas as cartas que foram adicionadas ao baralho;
+- Criar um baralho com o tema livre;
+- Adicionar e remover uma carta do baralho;
+- Veja todas as cartas que foram adicionadas ao baralho;
 
 Nesse projeto está sendo desenvolvido a capacidade de trabalhar com:
 
