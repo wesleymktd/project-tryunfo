@@ -1,7 +1,11 @@
 ## 🧐 Sobre
 
-<h4 align="left"> 
-	Projeto Tryunfo é um jogo onde a pessoa usuária cria uma carta, remove, visualiza cartas adicionadas, tudo de forma dinâmica.
+<p align="left"> 
+Tryunfo é um jogo no estilo Super Trunfo! Ao usar este aplicativo, o usuário é capaz de:
+
+Crie um baralho com o tema livre;
+Adicionar e remover uma carta do baralho;
+Veja todas as cartas que foram adicionadas ao baralho;
 
 Nesse projeto está sendo desenvolvido a capacidade de trabalhar com:
 
@@ -11,7 +15,7 @@ Nesse projeto está sendo desenvolvido a capacidade de trabalhar com:
 - Capturar eventos utilizando a sintaxe do React
 - Criar formulários utilizando sintaxe JSX com as tags: input, textarea, select, form, checkbox
 - Transmitir informações de componentes filhos para componentes pais via callbacks
-</h4>
+</p>
 
 ## ⚒ Instalando <a name = "installing"></a>
 
@@ -26,3 +30,7 @@ $ npm install
 $ npm start
 # O servidor vai inicar na porta <http://localhost:3000>
 ```
+## Principais tecnologias utilizadas
+- React;
+- Javascript;
+- Css;
